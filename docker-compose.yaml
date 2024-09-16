@@ -1,0 +1,20 @@
+services:
+  backend:
+    build:
+      context: email_service
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    env_file:
+      - email_service/.env
+  frontend:
+    build:
+      context: email-spa
+      dockerfile: Dockerfile
+    ports:
+      - 8080:80
+
+networks:
+  default:
+    name: email-network
+    external: false
